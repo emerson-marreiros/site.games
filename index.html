@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Arcade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="top">
+  <h1 class="logo">GAME ARCADE</h1>
+  <label class="who">Jogador <input id="player" maxlength="12" placeholder="ANON" autocomplete="off"></label>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Insira uma ficha.<br>Bata o recorde.</h2>
+    <p>Três jogos, um placar global. Sua pontuação é enviada quando a partida termina.</p>
+  </section>
+
+  <div class="layout">
+    <section>
+      <div class="filters" role="group" aria-label="Filtrar por categoria">
+        <button class="on" data-cat="">Todos</button>
+        <button data-cat="Ação">Ação</button>
+        <button data-cat="Quebra-cabeça">Quebra-cabeça</button>
+        <button data-cat="Clássicos">Clássicos</button>
+      </div>
+      <div class="catalog">
+        {% for g in games %}
+        <article class="game" data-id="{{ g.id }}" data-name="{{ g.name }}" data-cats="{{ g.cats|join('|') }}">
+          <h3>{{ g.name }}</h3>
+          <p>{{ g.desc }}</p>
+          <small>{{ g.cats|join(', ') }}</small>
+          <button class="play">Jogar</button>
+        </article>
+        {% endfor %}
+      </div>
+
+      <section id="stage" class="stage" hidden>
+        <h3 id="stage-title"></h3>
+        <div id="board"></div>
+        <div id="pad" class="pad" hidden>
+          <button data-d="up" aria-label="Cima">▲</button>
+          <button data-d="left" aria-label="Esquerda">◀</button>
+          <button data-d="down" aria-label="Baixo">▼</button>
+          <button data-d="right" aria-label="Direita">▶</button>
+        </div>
+        <p class="hint">Teclado: setas ou WASD (Cobrinha).</p>
+      </section>
+    </section>
+
+    <aside class="board">
+      <h3>Top 5 global</h3>
+      <ol id="leaders"><li>Carregando…</li></ol>
+    </aside>
+  </div>
+</main>
+
+<dialog id="modal">
+  <h3>Fim de jogo</h3>
+  <p class="big"><span id="m-score">0</span> pts</p>
+  <p id="m-msg"></p>
+  <div class="row">
+    <button id="again">Jogar de novo</button>
+    <button id="close" class="ghost">Fechar</button>
+  </div>
+</dialog>
+<script src="{{ url_for('static', filename='js/games.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+:root{--bg:#0b0a1a;--panel:#16143a;--line:#2b2766;--pink:#ff2e88;--cyan:#19e3ff;--yellow:#ffd23f;--text:#e8e6ff}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+button{touch-action:manipulation}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}
+button{font:inherit;cursor:pointer;border:2px solid var(--cyan);background:transparent;color:var(--cyan);padding:.5rem 1rem;border-radius:4px}
+button:hover,button.on{background:var(--cyan);color:var(--bg)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 1.5rem;border-bottom:2px solid var(--line)}
+.logo{font:700 1.5rem Silkscreen,monospace;color:var(--pink);margin:0;text-shadow:0 0 12px var(--pink)}
+.who input{background:var(--panel);border:2px solid var(--line);color:var(--yellow);padding:.4rem .6rem;border-radius:4px;width:9rem;font-family:Silkscreen,monospace}
+main{max-width:1100px;margin:0 auto;padding:1rem 1.5rem 3rem}
+.hero{padding:2.5rem 0 1.5rem}
+.hero h2{font:700 clamp(1.8rem,6vw,3.4rem)/1.1 Silkscreen,monospace;margin:0 0 1rem;color:var(--cyan);text-shadow:0 0 18px rgba(25,227,255,.5)}
+.hero p{max-width:50ch;margin:0}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:1.5rem;align-items:start}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.game{background:var(--panel);border:2px solid var(--line);border-radius:6px;padding:1rem;display:flex;flex-direction:column;gap:.4rem}
+.game[hidden]{display:none}
+.game h3{font-family:Silkscreen,monospace;margin:0;color:var(--yellow)}
+.game p{margin:0;flex:1}
+.game small{color:#9a97d6}
+.game .play{border-color:var(--pink);color:var(--pink);margin-top:.5rem}
+.game .play:hover{background:var(--pink);color:var(--bg)}
+.stage{margin-top:1.5rem;background:var(--panel);border:2px solid var(--pink);border-radius:6px;padding:1rem;text-align:center}
+.stage[hidden]{display:none}
+.stage h3{font-family:Silkscreen,monospace;margin:0 0 .75rem;color:var(--pink)}
+#board canvas{max-width:100%;height:auto;background:#05040f;border:2px solid var(--cyan)}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;max-width:340px;margin:auto}
+.mem .card{aspect-ratio:1;font-size:2rem;padding:0;border-color:var(--line);background:var(--bg)}
+.mem .card.up{background:var(--cyan);border-color:var(--cyan)}
+.ttt{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;max-width:270px;margin:auto}
+.ttt button{aspect-ratio:1;font:700 2rem Silkscreen,monospace;padding:0}
+.pad{display:grid;grid-template-columns:repeat(3,64px);grid-template-areas:". u ." "l d r";gap:.4rem;justify-content:center;margin-top:1rem}
+.pad[hidden]{display:none}
+.pad [data-d=up]{grid-area:u}.pad [data-d=left]{grid-area:l}.pad [data-d=down]{grid-area:d}.pad [data-d=right]{grid-area:r}
+.pad button{height:56px;touch-action:manipulation}
+.hint{color:#9a97d6;font-size:.85rem;margin:.75rem 0 0}
+.board{background:var(--panel);border:2px solid var(--line);border-radius:6px;padding:1rem}
+.board h3{font-family:Silkscreen,monospace;margin:0 0 .5rem;color:var(--cyan)}
+.board ol{margin:0;padding-left:1.4rem}
+.board li{padding:.35rem 0;border-bottom:1px solid var(--line)}
+.board li b{color:var(--yellow)}
+.board li span{float:right;color:var(--pink);font-family:Silkscreen,monospace}
+.board li small{display:block;color:#9a97d6}
+dialog{background:var(--panel);color:var(--text);border:2px solid var(--pink);border-radius:8px;text-align:center;padding:1.5rem 2rem}
+dialog::backdrop{background:rgba(5,4,15,.8)}
+dialog h3{font-family:Silkscreen,monospace;color:var(--pink);margin:0}
+.big{font:700 2.5rem Silkscreen,monospace;color:var(--yellow);margin:.5rem 0}
+.row{display:flex;gap:.5rem;justify-content:center;margin-top:1rem}
+.ghost{border-color:var(--line);color:var(--text)}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+@media(pointer:fine){.pad{display:none}}
